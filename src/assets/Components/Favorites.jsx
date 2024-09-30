@@ -1,7 +1,28 @@
 import React from 'react'
+import { UseGlobalContext } from '../../context'
 
 export default function Favorites() {
+  const{selectMeal,removeFromFavorites,favorites} = UseGlobalContext()
   return (
-    <div>Favorites</div>
+    <div className='w-full bg-dark p-2 px-8 rounded-b-2xl border-b-4 border-my-blue'>
+      <p className='text-3xl text-my-blue'>
+        favorites
+      </p>
+      <div className='flex gap-6 '>
+        {favorites.map((item)=>{
+          const {idMeal,strMealThumb:image} = item;
+          return(
+            <div key={idMeal}>
+              <img src={image} alt="" className='w-14 h-14 rounded-full'  onClick={()=>selectMeal(idMeal)}/>
+              <button onClick={()=>removeFromFavorites(idMeal,true)} className='text-red-600 text-2xl'>
+                remove
+              </button>
+
+            </div>
+          )
+        })}
+      </div>
+      
+    </div>
   )
 }

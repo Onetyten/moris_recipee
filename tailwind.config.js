@@ -8,11 +8,18 @@ export default {
     extend: {
         colors: {
           'my-green':'#93975C',
-          'dark' : '#100F0A',
+          'dark' : '#1b2546',
+          'dark-grey' : '#4b515d',
+          'my-grey' : '#787d87',
+          'dark-blue' : '#8dacc8',
+          'my-blue' : '#bddeef',
         },
         fontFamily:{
-          body:['specialFont']
+          epic:['epic'],
+          wulan:['wulan'],
+          
         }
+        
 
     },
   },
