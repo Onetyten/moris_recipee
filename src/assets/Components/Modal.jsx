@@ -40,10 +40,10 @@ if (!selectedMeal) {
               <h1 className='border-4 border-dark p-3 mt-2 rounded-xl text-dark hover:bg-dark hover:text-white'>{selectedMeal.strMeal || "Meal not available"}</h1>
               <div className='flex gap-7'>
                 <p className='bg-dark-grey text-my-blue  rounded-lg p-2 font-wulan text-2xl gap-x-5 pr-4'>
-                    Japanese
+                    {selectedMeal.strArea}
                 </p>
                 <p className=' rounded-lg p-2 text-dark bg-my-blue font-wulan text-2xl gap-x-5 pr-4'> 
-                  Japanese
+                  {selectedMeal.strCategory}
                 </p>
               </div>
              </div>
