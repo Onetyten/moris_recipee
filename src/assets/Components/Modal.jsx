@@ -66,11 +66,11 @@ if (!selectedMeal) {
             <div className='border-4 bg-dark rounded-2xl col-span-3 mt-2 p-6 text-2xl text-my-blue'>
               <p className='font-epic text-3xl'>Instructions:</p>
               <p>{selectedMeal.strInstructions || "No instructions available"}</p>
-              {selectedMeal.strSource && (
+              {/* {selectedMeal.strSource && (
                 <a href={selectedMeal.strSource} target='_blank' rel='noopener noreferrer'>
                   Original source
                 </a>
-              )}
+              )} */}
             </div>
          
           </div>
