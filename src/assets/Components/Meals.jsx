@@ -37,20 +37,20 @@ export default function Meals() {
 
   return (
     <div className='text-xl flex justify-center items-center'>
-      <div className='flex flex-wrap gap-6 justify-center w-full items-end'>
+      <div className='flex flex-wrap gap-6 justify-center w-full items-center'>
         {mealData.map(function (meal){
           const{idMeal,strMeal:title, strMealThumb:image}= meal
           const isFavorite = favorites.some(favMeal => favMeal.idMeal === idMeal);
           return( 
             <div className='my-8'>
-              <div className='text-my-blue w-80 font-epic text-3xl my-4'>  
+              <div className='text-my-blue w-40 sm:w-80 font-epic text-2xl sm:text-3xl my-4'>  
                 {title}
               </div>
-              <div className='w-80 border-8 border-my-blue rounded-2xl overflow-hidden'>
+              <div className='w-40 sm:w-80 border-4 sm:border-8 border-my-blue rounded-2xl overflow-hidden'>
                 <div className='relative' >
                   <img src={image} alt="" className='' onClick={()=>selectMeal(idMeal)} />
                   <i
-                    className={`fa-${isFavorite ? "solid" : "regular"} fa-heart text-pink-600 absolute bottom-3 text-4xl right-3`}
+                    className={`fa-${isFavorite ? "solid" : "regular"} fa-heart text-pink-600 absolute bottom-3 text-2xl sm:text-4xl right-3`}
                     onClick={() =>{if (!isFavorite){
                       addToFavorites(idMeal)
                     }
