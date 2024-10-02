@@ -38,11 +38,12 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+    /* color: #838283; */
   }
 
 
 html{
     
-   background-color: #4b515d;
-   font-family: 'autumn', 'Arial Narrow', Arial, sans-serif;
+   background-color: #ffffff;
+   font-family: "Afacad Flux", sans-serif;
 }

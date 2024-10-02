@@ -4,18 +4,18 @@ import { UseGlobalContext } from '../../context'
 export default function Favorites() {
   const{selectMeal,removeFromFavorites,favorites} = UseGlobalContext()
   return (
-    <div className='w-full bg-dark p-2 px-8 rounded-b-2xl border-b-4 border-my-blue'>
-      <p className='text-xl sm:text-3xl text-my-blue pb-2'>
-        favorites
+    <div className=' bg-soft-yellow p-1 px-8 border-b-4 sm:h-full'>
+      <p className='text-xl sm:text-2xl  text-my-orange sm:py-4'>
+        Favorites
       </p>
-      <div className='flex gap-6 flex-wrap '>
+      <div className='flex flex-row sm:flex-col justify-center pb-4 sm:pb-0 items-center gap-6 flex-wrap overflow-scroll  '>
         {favorites.map((item)=>{
           const {idMeal,strMealThumb:image} = item;
           return(
-            <div key={idMeal} className='flex flex-col justify-center '>
-              <img src={image} alt="" className='w-14 h-14 rounded-full'  onClick={()=>selectMeal(idMeal)}/>
-              <button onClick={()=>removeFromFavorites(idMeal,true)} className='text-red-600 text-xl  sm:text-2xl'>
-                remove
+            <div key={idMeal} className='flex flex-col justify-center relative'>
+              <img src={image} alt="" className='sm:w-20 w-14  rounded-full border-4 border-my-orange'  onClick={()=>selectMeal(idMeal)}/>
+              <button onClick={()=>removeFromFavorites(idMeal,true)} className='text-white text-xl absolute -bottom-4 sm:bottom-0  right-1/4 sm:right-0 sm:text-2xl'>
+                <i className='fa-xmark text-sm fa-solid bg-my-orange p-1 px-2 rounded-full'></i>
               </button>
 
             </div>

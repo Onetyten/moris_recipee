@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UseGlobalContext } from '../../context';
 
 export default function Modal() {
   const { closeModal, selectedMeal } = UseGlobalContext();
+  const [recipee,setRecipee] = useState(false)
+
+function toggle() {
+  setRecipee(!recipee)
+} 
 
 
 const renderIngredients = () => {
@@ -12,9 +17,8 @@ const renderIngredients = () => {
     const measure = selectedMeal[`strMeasure${i}`];
     if (ingredient && ingredient.trim() !== '') {
       ingredients.push(
-        <div key={i} className='flex justify-between text-lg sm:text-2xl text-my-blue border-my-blue border-b-2  p-1'>
-          <p>{ingredient}</p>
-          <p>{measure}</p>
+        <div key={i} className='flex justify-start items-center text-left text-lg sm:text-2xl p-1'>
+          <div className='w-2 h-2 bg-dark-grey rounded-full mr-6'></div><p>{measure} of {ingredient}</p>
         </div>
       );
     }
@@ -26,54 +30,74 @@ if (!selectedMeal) {
   return null; 
 }
 
+
+
+
+
   return (
-    <div className='w-screen h-screen fixed top-0  bg-[#1b254667] backdrop-blur-lg'>
+    <div className='w-screen h-screen fixed top-0 bg-[#a5744079] backdrop-blur-lg'>
       <div className='flex w-full h-screen justify-center items-center'>
+        <div className='w-full sm:w-3/5 h-5/6 text-xl bg-soft-yellow drop-shadow-2xl rounded-sm overflow-scroll relative flex flex-col gap-5 items-center'>
+          <img src={selectedMeal.strMealThumb || 'default-image-url.jpg'} alt={selectedMeal.strMeal || "No image"} className='w-full h-80 object-cover col-span-2 '/>
+          <button className='text-lg sm:text-2xl right-4 top-4 bg-soft-yellow hover:bg-my-orange absolute rounded-lg p-3 text-my-orange hover:text-soft-yellow border-0 border-white text-center ' onClick={closeModal} >Close</button>
 
-        <div className='w-full sm:w-3/5 h-4/5 text-xl bg-my-grey drop-shadow-2xl rounded-3xl overflow-scroll relative'>
-          <div className='fixed top-0 left-0 w-full bg-slate-900 flex justify-end z-10'>
-            <i className='fa-close fa-solid p-1 text-sm sm:text-3xl text-white pr-5 hover:text-red-500 ' onClick={closeModal} ></i>
+          <h1 className=' mt-2 rounded-xl text-my-orange mb-3 sm:mb-0 text-5xl font-bold'>{selectedMeal.strMeal || "Meal not available"}</h1>
+          <div className='flex gap-2 sm:gap-7 '>
+            <p className='bg-my-orange text-white  rounded-lg p-1 sm:p-2 text-lg sm:text-xl gap-x-5 text-center '>
+                {selectedMeal.strArea}
+            </p>
+            <p className=' rounded-lg p-2 text-my-orange border-2 border-my-orange  text-lg sm:text-xl gap-x-5 text-center'> 
+              {selectedMeal.strCategory}
+            </p>
           </div>
 
-          <div className='grid grid-cols-1  sm:grid-cols-3 relative pt-6 sm:pt-10 sm:gap-x-2 '>
-             <div className='col-span-3 flex flex-row justify-between items-center  font-epic text-xl sm:text-5xl p-1 sm:px-6  h-28 bg-dark-blue rounded-b-2xl  '>
-              <h1 className='border-2 sm:border-4 border-dark p-2 sm:p-3 mt-2 rounded-xl text-dark hover:bg-dark hover:text-white mb-3 sm:mb-0'>{selectedMeal.strMeal || "Meal not available"}</h1>
-              <div className='flex gap-2 sm:gap-7 '>
-                <p className='bg-dark-grey text-my-blue  rounded-lg p-1 sm:p-2 font-wulan text-lg sm:text-2xl gap-x-5 text-center '>
-                    {selectedMeal.strArea}
-                </p>
-                <p className=' rounded-lg p-2 text-dark bg-my-blue font-wulan  text-lg sm:text-2xl gap-x-5 pr-4 text-center'> 
-                  {selectedMeal.strCategory}
-                </p>
+          {}
+
+          {recipee ? (
+            <div className='row-span-2 col-span-1 grid p-4 text-dark-grey'>
+              <p className='text-xl sm:text-4xl my-2 items-center text-center font-bold'>
+                Ingredients
+              </p>
+              <div>
+                {renderIngredients()}
               </div>
-             </div>
-
-
-            <img
-              src={selectedMeal.strMealThumb || 'default-image-url.jpg'}
-              alt={selectedMeal.strMeal || "No image"}
-              className='w-full h-80 object-cover rounded-3xl col-span-2  border-4 border-dark mt-3'
-            />
-              <div className=' row-span-2 col-span-1 grid p-4 '>
-                <p className='font-epic text-xl sm:text-3xl text-my-blue my-2'>Ingredients:</p>
-
-                <div className="">
-                  {renderIngredients()}
-                </div>
-             </div>
-            <div className='border-4 bg-dark rounded-2xl col-span-3  sm:mt-2 p-6 text-xl sm:text-2xl text-my-blue'>
-              <p className='font-epic text-xl sm:text-3xl'>Instructions:</p>
-              <p>{selectedMeal.strInstructions || "No instructions available"}</p>
-              {/* {selectedMeal.strSource && (
-                <a href={selectedMeal.strSource} target='_blank' rel='noopener noreferrer'>
-                  Original source
-                </a>
-              )} */}
             </div>
-         
+          ) : (
+            <div className=' rounded-2xl col-span-3  sm:mt-2 p-6 text-xl sm:text-2xl text-my-orange'>
+              <p className='text-center mb-2 text-xl sm:text-4xl font-bold'>Instructions</p>
+              <p className='text-dark-grey text-lg sm:text-xl'>{selectedMeal.strInstructions || "No instructions available"}</p>
+            </div>
+
+          )}
+
+          <div className='w-full flex justify-between px-7 pb-7 '>
+            <button className='text-md sm:text-2xl right-4 top-4 rounded-lg p-3 border-2 border-my-orange text-my-orange text-center'onClick={toggle}>
+                {recipee ? 'Show instructions' : 'Show ingredients'}
+            </button>
+            <button className='text-md sm:text-2xl right-4 top-4 border-2 border-my-orange text-my-orange rounded-lg p-3 hover:text-my-orange text-center' onClick={closeModal} >Close
+            </button>
+
+
           </div>
+
+          
+        
+        
         </div>
       </div>
     </div>
   );
 }
+
+
+
+
+{/* <div className='fixed top-0 left-0 w-full bg-slate-900 flex justify-end z-10'>
+          </div> */}
+
+{/* {selectedMeal.strSource && (
+  <a href={selectedMeal.strSource} target='_blank' rel='noopener noreferrer'>
+    Original source
+  </a>
+)} */}
+
