@@ -14,7 +14,7 @@ export default function Meals() {
         <p className='text-my-orange font-body text-5xl'>
           Loading
         </p>
-        <i className='fa-solid fa-gear text-5xl text-my-blue animate-spin '></i>
+        <i className='fa-solid fa-gear text-5xl text-my-orange animate-spin '></i>
       </div>
 
     )
