@@ -11,7 +11,7 @@ export default function Meals() {
   if (loading){
     return(
       <div className='min-h-screen flex justify-center gap-8 items-center'>
-        <p className='text-my-blue font-body text-5xl'>
+        <p className='text-my-orange font-body text-5xl'>
           Loading
         </p>
         <i className='fa-solid fa-gear text-5xl text-my-blue animate-spin '></i>
@@ -24,7 +24,7 @@ export default function Meals() {
     console.log("no meal data")
     return(
       <div className='min-h-screen flex justify-center gap-8 items-center'>
-        <p className='text-my-blue font-body text-5xl'>
+        <p className='text-my-orange font-body text-5xl'>
             No meals matched your search term 😔
         </p>
         
