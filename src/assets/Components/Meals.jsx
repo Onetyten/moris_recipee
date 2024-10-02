@@ -57,7 +57,7 @@ export default function Meals() {
                       <p className=' rounded-lg p-2 text-lg sm:text-2xl text-center text-my-orange'> 
                         {category}
                       </p>
-                      <div className='flex items-center text-2xl sm:text-2xl mr-3 text-my-orange sm:border-2 border-my-orange p-1 rounded-md  '>
+                      <div className='flex items-center text-2xl sm:text-2xl mr-3 text-my-orange border-my-orange p-1 rounded-md  '>
                         <i
                           className={`fa-${isFavorite ? "solid" : "regular"} fa-bookmark mr-3`}
                           onClick={() =>{if (!isFavorite){
@@ -68,9 +68,7 @@ export default function Meals() {
                           } }}>
                         </i>
 
-                        <p className='pr-1 hidden sm:inline'>
-                          Save
-                        </p>
+
 
                       </div>
 
