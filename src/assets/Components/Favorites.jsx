@@ -4,7 +4,7 @@ import { UseGlobalContext } from '../../context'
 export default function Favorites() {
   const{selectMeal,removeFromFavorites,favorites} = UseGlobalContext()
   return (
-    <div className=' bg-soft-yellow p-1 px-8 border-b-4 sm:h-full'>
+    <div className=' bg-soft-yellow p-1 px-8 border-b-4 sm:min-h-full'>
       <p className='text-xl sm:text-2xl  text-my-orange sm:py-4'>
         Favorites
       </p>

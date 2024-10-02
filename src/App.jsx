@@ -10,7 +10,7 @@ function App() {
 
   return (
     <main className='relative'>
-      <div className='flex flex-col lg:flex-row'> {/* Flex column for mobile, row for large screens */}
+      <div className='flex flex-col lg:flex-row min-h-screen'> {/* Flex column for mobile, row for large screens */}
                 {/* On larger screens, show favorites on the side */}
         {favorites.length > 0 && (
         <div className='hidden lg:block'>
