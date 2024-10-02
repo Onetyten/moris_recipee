@@ -25,7 +25,7 @@ export default function Meals() {
     return(
       <div className='min-h-screen flex justify-center gap-8 items-center'>
         <p className='text-my-orange font-body text-5xl'>
-            No meals matched your search term 😔
+            No meal matched your search term 😔
         </p>
         
       </div>
